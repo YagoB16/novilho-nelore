@@ -5,10 +5,8 @@ import NavBar from "@/src/components/layout/NavBar";
 import Service from "@/src/components/sections/Service";
 
 import Footer from "@/src/components/layout/Footer";
-import Reveal from "@/src/components/features/Reveal";
 import Hero from "@/src/components/sections/Hero";
 import { useForm } from "../contexts/FormContext";
-import Work from "../components/sections/Work";
 import Contact from "../components/sections/Contact";
 
 export default function Home() {
