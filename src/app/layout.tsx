@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import { Layout } from "../components/Layout";
 import { LanguageProvider } from "../contexts/LanguageContext";
@@ -31,7 +31,9 @@ export default function RootLayout({
                         <Layout>{children}</Layout>
                     </FormProvider>
                 </LanguageProvider>
+                <Analytics />
             </body>
         </html>
+
     );
 }
