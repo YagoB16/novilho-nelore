@@ -37,7 +37,7 @@ export default function Lojas({ id }: SectionProps) {
                         Nossas Unidades
                     </h2>
                     <p className="mx-auto mt-4 max-w-2xl !text-[var(--lightest-slate)]">
-                        Escolha a loja mais próxima de si. Oferecemos o mesmo padrão de excelência, limpeza e qualidade em todas as nossas unidades.
+                        Escolha a loja mais próxima de ti. Oferecemos o mesmo padrão de excelência, limpeza e qualidade em todas as nossas unidades.
                     </p>
                 </div>
 

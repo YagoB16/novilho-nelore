@@ -24,7 +24,6 @@ export default function Home() {
                 <About id="about" />
                 <Service id="services" />
                 <Contact id="contact" />
-                {/* <Work id="work" /> */}
             </div>
             <Footer />
         </>
