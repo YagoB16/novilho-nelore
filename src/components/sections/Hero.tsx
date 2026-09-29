@@ -1,75 +1,46 @@
-"use client";
+import Image from "next/image";
 
-import { motion } from "framer-motion";
-import { useLanguage } from "@/src/contexts/LanguageContext";
-import { TypeAnimation } from "react-type-animation";
-interface SectionProps {
-  id: string;
-}
+import fachada from "@/public/fachada_nn.jpg"
+export default function Hero() {
+    return (
+        <section id="home" className="w-full overflow-x-hidden bg-[var(--color-background-light)] px-4 py-12 sm:px-4 sm:py-20 lg:px-8">
+            <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 md:flex-row md:items-center lg:gap-16">
 
-export default function Hero({ id }: SectionProps) {
-  const { t } = useLanguage();
+                <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left ">
+                    <h1 className="text-4xl font-extrabold leading-tight !text-[var(--color-text-primary-red)] sm:text-5xl md:text-6xl">
+                        O autêntico sabor que a sua família merece.
+                    </h1>
 
-  return (
-    <motion.section
-      id={id}
-      className="px-5 py-10 scroll-mt-20 min-h-[120vh] lg:min-h-[90vh]"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      <section
-        id={id}
-        className="flex flex-col items-start justify-center min-h-[100vh] ease-in w-full"
-      >
-        {/* Greeting - Altura fixa */}
-        <div className="mb-7.5 ml-1 h-8 flex items-end">
-          <h1 className="text-[clamp(var(--fz-sm),5vw,var(--fz-md))] font-normal text-[var(--green)]">
-            {t("hero.greeting")}
-          </h1>
-        </div>
+                    <p className="mt-6 max-w-xl text-base text-gray-800 sm:text-lg leading-relaxed">
+                        Muito mais que um açougue, somos especialistas em carnes. Com procedência garantida, ambiente impecável e um atendimento de excelência, preparamos o seu corte exatamente como você gosta — seja para o almoço do dia a dia ou para o churrasco perfeito.
+                    </p>
 
-        {/* Nome - Altura fixa */}
-        <div className="!m-0 h-22 inline-block items-center overflow-hidden whitespace-nowrap font-mono">
-          <h2 className="text-[clamp(40px,_8vw,_80px)] leading-none">
+                    <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row sm:gap-5">
+                        <a
+                            href="https://wa.me/5511971303732?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex min-h-[56px] w-full items-center justify-center rounded-full bg-[#6a040f] px-8 text-base font-bold text-white transition-all hover:bg-[#57030c] hover:-translate-y-1 sm:w-auto shadow-black"
+                        >
+                            Entrar em contato
+                        </a>
+                    </div>
+                </div>
 
-             <TypeAnimation
-              sequence={[t("hero.name"), 1000, " ", 1000]}
-              speed={5}
-              repeat={Infinity}
-            />
-          </h2>
-        </div>
+                <div className="w-full md:w-1/2">
+                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl sm:aspect-[4/3] md:aspect-square shadow-black border-4 border-[#6a040f]/70">
+                        <Image
+                            src={fachada}
+                            alt="Balcão de carnes premium do Novilho Nelore"
+                            fill
+                            priority
+                            className="object-cover transition-transform duration-700 hover:scale-105"
+                            sizes="(min-width: 768px) 50vw, 100vw"
+                        />
+                    </div>
+                </div>
 
-        {/* Subtítulo - Container com altura mínima fixa */}
-        <div className="!mt-2.5 !mb-0 min-h-[80px] flex items-center">
-          <h3 className="!text-[var(--slate)] text-outline text-[clamp(32px,_6vw,_65px)] leading-tight max-w-4xl">
-               {t("hero.subtitle")}
-          </h3>
-        </div>
-
-        {/* Descrição - Container com altura fixa para evitar variação */}
-        <div className="min-h-[120px] flex items-start pt-5 max-w-3xl">
-          <p className="text-[var(--slate)] leading-relaxed text-lg">
-            {t("hero.description")}
-          </p>
-        </div>
-
-        {/* Botão - Altura padronizada */}
-        <div className="mt-12.5">
-          <a
-            href="./Yago_Barbosa_Currículo.pdf"
-            download="Yago_Barbosa_Curriculo.pdf"
-            className="inline-flex items-center justify-center relative group border border-[var(--green)] text-[var(--green)] rounded-md py-4 px-6 font-medium min-w-[180px] text-center z-0 overflow-hidden transition-colors duration-500"
-          >
-            <span className="absolute top-0 left-0 w-0 h-full bg-[var(--green)] z-[-1] transition-all duration-500 group-hover:w-full"></span>
-
-            <span className="relative z-10 transition-colors duration-500 group-hover:text-black">
-              {t("hero.download_resume")}
-            </span>
-          </a>
-        </div>
-      </section>
-    </motion.section>
-  );
+            </div>
+        </section>
+    );
 }

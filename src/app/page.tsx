@@ -8,31 +8,25 @@ import Footer from "@/src/components/layout/Footer";
 import Reveal from "@/src/components/features/Reveal";
 import Hero from "@/src/components/sections/Hero";
 import { useForm } from "../contexts/FormContext";
+import Work from "../components/sections/Work";
+import Contact from "../components/sections/Contact";
 
 export default function Home() {
+    const { isFormOpen } = useForm();
 
-   const { isFormOpen } = useForm()
-   
-  return (
-    <>
-      <NavBar />
-      <div
-        className={`transition-all duration-300 ${isFormOpen ? "blur-sm" : ""}`}
-      >
-        <Reveal direction="up">
-          <Hero id="home" />
-        </Reveal>
-        <Reveal direction="left" delay={0.3}>
-          <About id="about" />
-        </Reveal>
-        <Reveal direction="rotate" delay={0.3}>
-          <Service id="services" />
-        </Reveal>
-        {/* <Reveal direction="down" delay={0.3}>
-        <Work id="work" />
-      </Reveal> */}
-      </div>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <NavBar />
+            <div
+                className={`w-full overflow-x-hidden transition-all duration-300 ${isFormOpen ? "blur-sm" : ""}`}
+            >
+                <Hero />
+                <About id="about" />
+                <Service id="services" />
+                <Contact id="contact" />
+                {/* <Work id="work" /> */}
+            </div>
+            <Footer />
+        </>
+    );
 }
