@@ -10,16 +10,16 @@ const stores = [
         id: 1,
         name: "Matriz - Vila Prudente",
         address: "Rua Ibitirama, 124/132 - São Paulo, SP",
-        hours: "Seg a Sáb: 7h30 às 20h | Dom: 7h30 às 14h",
-        phone: "(11) 97130-3732",
+        hours: "Seg a Sáb: 7h30 às 19h30 | Dom: 7h00 às 14h",
+        phone: "(11) 96625-0656",
         mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.7865103447937!2d-46.591244!3d-23.576081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5c088f170b09%3A0x2a149b29e011d615!2sR.%20Ibitirama%2C%20124%20-%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003133-100!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr",
     },
     {
         id: 2,
         name: "Empório de Carnes Novilho Nelore",
         address: "Rua ibitirama, 1151 - Vila Prudente, SP",
-        hours: "Seg a Sáb: 7h30 às 20h | Dom: 7h30 às 14h",
-        phone: "(11) 97130-3732",
+        hours: "Seg a Sáb: 7h30 às 19h30 | Dom: 7h00 às 14h",
+        phone: "(11) 96625-0656",
         mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7312.762674849934!2d-46.58632661802068!3d-23.59065302406467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5c6dca5a2415%3A0x79407fac0749cefd!2sR.%20Ibitirama%2C%201151%20-%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003133-200!5e0!3m2!1spt-BR!2sbr!4v1790717634684!5m2!1spt-BR!2sbr",
     }
 ];
