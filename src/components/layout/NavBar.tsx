@@ -1,21 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import logo from "@/public/logo.svg"
+import logo from "@/public/logo.svg";
+
 const NAV_LINKS = [
-    { label: "Início", href: "#home" },
-    { label: "Sobre Nós", href: "#about" },
-    { label: "Nossas Lojas", href: "#lojas" },
-    { label: "Dúvidas", href: "#services" },
+    { label: "Sobre Nós", href: "#hero" },
+    { label: "Nossas Lojas", href: "#locations" },
+    { label: "Dúvidas", href: "#faq" },
     { label: "Contato", href: "#footer" },
 ];
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState("#home");
+    const [activeLink, setActiveLink] = useState("#hero"); // Inicia corretamente com a primeira secção
+
+    // O "Espião de Scroll" (Scroll Spy)
+    useEffect(() => {
+        const handleScroll = () => {
+            // A posição atual do scroll + 100px para compensar a altura do NavBar fixo
+            const scrollPosition = window.scrollY + 100;
+
+            let currentActive = activeLink;
+
+            NAV_LINKS.forEach((link) => {
+                const sectionId = link.href.substring(1); // Remove o '#' para buscar o ID (ex: "hero")
+                const section = document.getElementById(sectionId);
+
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+
+                    // Se a tela estiver dentro dos limites desta secção, ela torna-se a ativa
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentActive = link.href;
+                    }
+                }
+            });
+
+            if (currentActive !== activeLink) {
+                setActiveLink(currentActive);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Corre a verificação uma vez ao carregar a página (útil se o cliente atualizar a página a meio do site)
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [activeLink]);
 
     const handleLinkClick = (href: string) => {
         setActiveLink(href);
@@ -23,12 +59,13 @@ export default function NavBar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-red-950 bg-[#000] shadow-lg">
+        <header className="fixed top-0 left-0 z-50 w-full border-b border-red-950 bg-[#000] shadow-lg">
             <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
                 {/* Logo / Nome do Açougue */}
                 <Link
-                    href="#home"
-                    onClick={() => handleLinkClick("#home")}
+                    href="#hero"
+                    onClick={() => handleLinkClick("#hero")}
                     className="flex items-center gap-3 text-xl font-extrabold tracking-tight text-white sm:text-2xl hover:opacity-90 transition-opacity"
                 >
                     <Image
@@ -36,7 +73,7 @@ export default function NavBar() {
                         alt="Logo Novilho Nelore"
                         width={60}
                         height={60}
-                        className="h-10 w-auto sm:h-12" /* h-10 no mobile (40px), h-12 no desktop (48px) */
+                        className="h-10 w-auto sm:h-12"
                         priority
                     />
                     <span>Novilho Nelore</span>

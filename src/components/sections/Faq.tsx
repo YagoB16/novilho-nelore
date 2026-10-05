@@ -39,7 +39,7 @@ const faqData = [
     }
 ];
 
-export default function Service({ id }: SectionProps) {
+export default function Faq({ id }: SectionProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleAccordion = (index: number) => {

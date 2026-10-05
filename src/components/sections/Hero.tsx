@@ -1,11 +1,48 @@
-import Image from "next/image";
+"use client";
 
-import fachada from "@/public/fachada_nn.jpg"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// Importe as suas imagens aqui
+import fachada from "@/src/app/assets/image/fachada_nn.jpg";
+
+const carouselImages = [
+    fachada,
+    fachada,
+];
+
 export default function Hero() {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const prevImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+        );
+    };
+
+    const nextImage = () => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+        );
+    };
+
+    // Efeito para trocar a imagem automaticamente
+    useEffect(() => {
+        if (carouselImages.length <= 1) return;
+
+        const timer = setInterval(() => {
+            nextImage();
+        }, 4000);
+
+        return () => clearInterval(timer);
+    }, [currentImageIndex]);
+
     return (
         <section id="home" className="w-full overflow-x-hidden bg-[var(--color-background-light)] px-4 py-12 sm:px-4 sm:py-20 lg:px-8">
             <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 md:flex-row md:items-center lg:gap-16">
 
+                {/* Coluna da Esquerda: Textos e Botão */}
                 <div className="flex w-full flex-col items-center text-center md:w-1/2 md:items-start md:text-left ">
                     <h1 className="text-4xl font-extrabold leading-tight !text-[var(--color-text-primary-red)] sm:text-5xl md:text-6xl">
                         O autêntico sabor que a sua família merece.
@@ -27,16 +64,62 @@ export default function Hero() {
                     </div>
                 </div>
 
+                {/* Coluna da Direita: Carrossel */}
                 <div className="w-full md:w-1/2">
-                    <div className="relative aspect-square w-full overflow-hidden rounded-3xl sm:aspect-[4/3] md:aspect-square shadow-black border-4 border-[#6a040f]/70">
-                        <Image
-                            src={fachada}
-                            alt="Balcão de carnes premium do Novilho Nelore"
-                            fill
-                            priority
-                            className="object-cover transition-transform duration-700 hover:scale-105"
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                        />
+                    {/* O group ajuda a mostrar as setas apenas quando passa o mouse (opcional) */}
+                    <div className="group relative aspect-square w-full overflow-hidden rounded-3xl sm:aspect-[4/3] md:aspect-square shadow-black border-4 border-[#6a040f]/70 bg-black">
+
+                        {/* Imagens */}
+                        {carouselImages.map((img, index) => (
+                            <Image
+                                key={index}
+                                src={img}
+                                alt={`Apresentação Novilho Nelore ${index + 1}`}
+                                fill
+                                priority={index === 0}
+                                className={`object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                                    }`}
+                                sizes="(min-width: 768px) 50vw, 100vw"
+                            />
+                        ))}
+
+                        {/* Só renderiza se houver mais do que 1 imagem */}
+                        {carouselImages.length > 1 && (
+                            <>
+                                {/* Seta Esquerda */}
+                                <button
+                                    onClick={prevImage}
+                                    className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-all hover:bg-[#6a040f] hover:scale-110"
+                                    aria-label="Imagem anterior"
+                                >
+                                    <ChevronLeft size={24} />
+                                </button>
+
+                                {/* Seta Direita */}
+                                <button
+                                    onClick={nextImage}
+                                    className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-all hover:bg-[#6a040f] hover:scale-110"
+                                    aria-label="Próxima imagem"
+                                >
+                                    <ChevronRight size={24} />
+                                </button>
+
+                                {/* Bolinhas indicadoras */}
+                                <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
+                                    {carouselImages.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setCurrentImageIndex(index)}
+                                            className={`h-2.5 rounded-full transition-all duration-300 ${index === currentImageIndex
+                                                    ? "w-8 bg-[#d4af37]"
+                                                    : "w-2.5 bg-white/60 hover:bg-white"
+                                                }`}
+                                            aria-label={`Ir para imagem ${index + 1}`}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
 

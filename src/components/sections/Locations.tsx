@@ -24,7 +24,7 @@ const stores = [
     }
 ];
 
-export default function Lojas({ id }: SectionProps) {
+export default function Locations({ id }: SectionProps) {
     return (
         <section id={id} className="w-full bg-[var(--color-background)]  py-16 sm:py-24">
             <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
