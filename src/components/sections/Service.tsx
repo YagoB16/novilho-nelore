@@ -11,7 +11,7 @@ interface SectionProps {
 const faqData = [
     {
         question: "Quais formas de pagamento vocês aceitam?",
-        answer: "Aceitamos todos os cartões de crédito e débito, além dos principais cartões de refeição e alimentação do mercado.",
+        answer: "Aceitamos todos os cartões de crédito e débito, além dos principais cartões de refeição e alimentação do mercado. Para saber mais entre em contato.",
     },
     {
         question: "Vocês fazem entrega / delivery?",
