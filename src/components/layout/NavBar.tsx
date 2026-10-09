@@ -8,7 +8,7 @@ import logo from "@/public/logo.svg";
 
 const NAV_LINKS = [
     { label: "Sobre Nós", href: "#hero" },
-    { label: "Nossas Lojas", href: "#locations" },
+    { label: "Lojas", href: "#locations" },
     { label: "Dúvidas", href: "#faq" },
     { label: "Contato", href: "#footer" },
 ];

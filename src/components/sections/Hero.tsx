@@ -6,9 +6,14 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Importe as suas imagens aqui
 import fachada from "@/src/app/assets/image/fachada_nn.jpg";
+import picanha from "@/src/app/assets/image/picanha-imagem.webp";
+import pecasPicanha from "@/src/app/assets/image/pecas-picanha.jpg"
+import chorizo from "@/src/app/assets/image/chorizo.jpg"
 
 const carouselImages = [
-    fachada,
+    picanha,
+    pecasPicanha,
+    chorizo,
     fachada,
 ];
 
@@ -111,8 +116,8 @@ export default function Hero() {
                                             key={index}
                                             onClick={() => setCurrentImageIndex(index)}
                                             className={`h-2.5 rounded-full transition-all duration-300 ${index === currentImageIndex
-                                                    ? "w-8 bg-[#d4af37]"
-                                                    : "w-2.5 bg-white/60 hover:bg-white"
+                                                ? "w-8 bg-[#d4af37]"
+                                                : "w-2.5 bg-white/60 hover:bg-white"
                                                 }`}
                                             aria-label={`Ir para imagem ${index + 1}`}
                                         />

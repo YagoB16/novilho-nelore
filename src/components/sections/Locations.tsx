@@ -80,7 +80,7 @@ export default function Locations({ id }: SectionProps) {
 
                                 {/* Botão livre de amarras (sem div wrapper e sem w-full). O flex-col do pai estica-o perfeitamente até ao limite do padding. */}
                                 <a
-                                    href={`https://wa.me/55${store.phone.replace(/\D/g, '')}`}
+                                    href={`https://wa.me/55${store.phone.replace(/\D/g, '')}?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido!`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="mt-6 flex items-center justify-center gap-2 rounded-xl border border-[var(--green-wpp)] bg-[var(--green-wpp)]/20 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--green-wpp)]"
